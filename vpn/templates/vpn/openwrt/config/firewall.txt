@@ -1,0 +1,8 @@
+config zone
+        option name             {{ client.gateway.nickname }}
+        list network            '{{ client.gateway.nickname }}'
+        option input            ACCEPT
+        option output           ACCEPT
+        option forward          ACCEPT
+        option  log             1
+        option log_limit        10/minute

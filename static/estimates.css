@@ -1,0 +1,43 @@
+section.estimate-header img.logo {
+    width: 282px;
+    float: left;
+}
+
+section.estimate-header p {
+    margin-left: 285px;
+}
+
+section.estimate-lines table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+section.estimate-lines th {
+    background: #cccccc;
+}
+
+section.estimate-lines th,
+section.estimate-lines td {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+section.estimate-lines tfoot th {
+    text-align: right;
+}
+
+td.number {
+    text-align: right;
+}
+
+section.estimate-taxes table {
+    margin-left: 70%;
+    width: 30%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+section.estimate-taxes th,
+section.estimate-taxes td {
+    border: 1px solid black;
+}

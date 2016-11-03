@@ -1,0 +1,12 @@
+config tinc-net {{ client.gateway.nickname }}
+option enabled 1
+        option logfile /tmp/log/tinc.{{ client.gateway.nickname }}.log
+        option debug 3
+        list ConnectTo {{ client.gateway.nickname }}
+        option Name {{ client.member.username }}
+config tinc-host {{ client.member.username }}
+        option enabled 1
+        option net {{ client.gateway.nickname }}
+config tinc-host {{ client.gateway.nickname }}
+        option enabled 1
+        option net {{ client.gateway.nickname }}

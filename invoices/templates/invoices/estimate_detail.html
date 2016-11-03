@@ -1,0 +1,12 @@
+{% load i18n static %}<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% trans "Estimate:" %}{{ estimate.title }}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'estimates.css' %}">
+        <link rel="stylesheet" type="text/css" media="print" href="{% static 'base_print.css' %}">
+        <link rel="stylesheet" type="text/css" media="print" href="{% static 'estimate_print.css' %}">
+    </head>
+    <body>
+        {% include "invoices/includes/estimate.html" with estimate=estimate %}
+    </body>
+</html>

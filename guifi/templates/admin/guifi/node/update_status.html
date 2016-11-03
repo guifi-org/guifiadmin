@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} update-status{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+&rsaquo; <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+&rsaquo; <a href="{% url 'admin:guifi_node_change' original.pk %}">{{ original|truncatewords:"18" }}</a>
+&rsaquo; {% trans "update status" %}
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}<div id="content-main">
+    <p>{% blocktrans with node=original.name %}Updating {{ node }} node.{% endblocktrans %}</p>
+    <form action="." method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button>{% trans "Update" %}</button>
+    </form></div>
+{% endblock %}

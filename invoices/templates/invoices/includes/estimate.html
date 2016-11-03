@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load staticfiles %}
+<a class="web" href="{% url "admin:invoices_estimate_change" estimate.pk %}">{% trans "Edit estimate" %}</a>
+<a class="web" href="{% url "estimate_to_invoice" estimate_pk=estimate.pk %}">{% trans "Convert to invoice" %}</a>
+<article>
+    <section class="estimate-header">
+        <img class="logo" src="{% static "imgs/logo.jpg" %}">
+        <p class="title">{{ estimate.title }}</p>
+        <p class="date">Date: {{ estimate.date }}</p>
+        <p class="client">
+            {{ estimate.person.name }},<br>
+            {{ estimate.person.fid}}<br>
+            {{ estimate.address}}<br>
+        </p>
+    </section>
+    {% if estimate.notes %}
+    <div class="estimate-notes">
+        {{ estimate.notes |safe }}
+    </div>
+    {% endif %}
+    <section class="estimate-lines">
+        <table>
+            <thead>
+                <tr>
+                    <th>{% trans "Description" %}</th>
+                    <th>{% trans "Quantity" %}</th>
+                    <th>{% trans "Unit price" %}</th>
+                    <th>{% trans "VAT" %}</th>
+                    <th>{% trans "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for line in estimate.lines.all %}
+                <tr>
+                    <td>{{ line.description }}</td>
+                    <td class="number">{{ line.quantity }}</td>
+                    <td class="number">{{ line.unit_price }}</td>
+                    <td class="number">{{ line.vat }}</td>
+                    <td class="number">{{ line.total }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">{% trans "Total" %}</th>
+                    <td class="number">{{ estimate.total }}</td>
+            </tfoot>
+        </table>
+    </section>
+    <section class="estimate-taxes">
+        <table>
+            <thead>
+                <tr>
+                    <th>{% trans "VAT" %}</th>
+                    <th>{% trans "Base" %}</th>
+                    <th>{% trans "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vat in estimate.vat_details %}
+                <tr>
+                    <td class="number">{{ vat.vat__percent }}</td>
+                    <td class="number">{{ vat.base|floatformat:2 }}</td>
+                    <td class="number">{{ vat.tax|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>

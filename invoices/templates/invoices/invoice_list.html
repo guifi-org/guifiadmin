@@ -1,0 +1,15 @@
+{% load i18n static %}<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% trans "Invoices" %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'invoices.css' %}">
+        <link rel="stylesheet" type="text/css" media="print" href="{% static 'base_print.css' %}">
+        <link rel="stylesheet" type="text/css" media="print" href="{% static 'invoices_print.css' %}">
+    </head>
+    <body>
+        {% for invoice in invoice_list %}
+            {% include "invoices/includes/invoice.html" with invoice=invoice %}
+            <hr>
+        {% endfor %}
+    </body>
+</html>

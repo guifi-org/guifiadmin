@@ -1,0 +1,9 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+{{ block.super }}
+<li>
+    <a href="{% url "estimate_to_invoice" estimate_pk=original.pk %}">{% trans "convert to invoice" %}</a>
+</li>
+{% endblock %}

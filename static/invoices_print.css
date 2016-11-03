@@ -1,0 +1,8 @@
+@page {
+  size: 210mm 287mm;
+  margin: 0;
+}
+
+article {
+    page-break-after: always;
+}

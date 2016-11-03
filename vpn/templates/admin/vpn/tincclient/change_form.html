@@ -1,0 +1,26 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+{% block object-tools-items %}
+    {{ block.super }}
+    <li>
+        <a href="{% url "vpn_tinc_client_conf" pk=original.id %}">{% trans "tinc.conf" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_tinc_up" pk=original.id %}">{% trans "tinc_up.sh" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_tinc_down" pk=original.id %}">{% trans "tinc_down.sh" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_host" pk=original.id %}">{% trans "Host conf" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_openwrt_tinc_config" pk=original.id %}">{% trans "OpenWRT tinc config" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_openwrt_firewall_config" pk=original.id %}">{% trans "OpenWRT firewall config" %}</a>
+    </li>
+    <li>
+        <a href="{% url "vpn_tinc_client_openwrt_tar_gz" pk=original.id %}">{% trans "OpenWRT tar.gz" %}</a>
+    </li>
+{% endblock %}

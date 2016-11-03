@@ -1,0 +1,9 @@
+[
+{
+    "fields": {
+        "percent": 21
+    },
+    "model": "invoices.vat",
+    "pk": 1
+}
+]

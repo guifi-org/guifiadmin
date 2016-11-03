@@ -1,0 +1,11 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+{% block object-tools-items %}
+    {{ block.super }}
+    <li>
+        <a href="{% url "guifi_update_node_status" gid=original.gid %}">{% trans "Update status" %}</a>
+    </li>
+    <li>
+        <a href="{{ original.guifi_url }}" class="viewsitelink">{% trans "View in guifi.net" %}</a>
+    </li>
+{% endblock %}

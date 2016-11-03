@@ -1,0 +1,6 @@
+/db.sqlite3
+*.pyc
+*.swp
+.ropeproject
+/.cache/cnml/*cnml
+/guifiadmin/local_settings.py

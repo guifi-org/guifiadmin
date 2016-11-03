@@ -1,0 +1,3 @@
+Address = gisa-elkartea.org
+
+{{ client.public_key }}

@@ -1,0 +1,25 @@
+@page {
+  size: 210mm 297mm;
+  margin: 5mm 10mm 5mm 10mm;
+}
+
+article {
+    page-break-after: always;
+    border: 1px solid black;
+}
+
+section.estimate-header {
+    height: 50mm;
+}
+
+section.estimate-lines {
+    height: 110mm;
+}
+
+section.estimate-lines th {
+    background: transparent;
+}
+
+section.estimate-taxes {
+    height: 30mm;
+}

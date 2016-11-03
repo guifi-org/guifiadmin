@@ -1,0 +1,4 @@
+Address = {{ gateway.address }}
+Subnetwork = {{ gateway.subnet }}
+
+{{ gateway.public_key }}

@@ -1,0 +1,73 @@
+[
+{
+    "fields": {
+        "code": "es",
+        "name": "Espainia"
+    },
+    "model": "geolocation.country",
+    "pk": 1
+},
+{
+    "fields": {
+        "country": 1,
+        "code": "gipuzkoa",
+        "name": "Gipuzkoa"
+    },
+    "model": "geolocation.state",
+    "pk": 1
+},
+{
+    "fields": {
+        "country": 1,
+        "code": "bizkaia",
+        "name": "Bizkaia"
+    },
+    "model": "geolocation.state",
+    "pk": 2
+},
+{
+    "fields": {
+        "country": 1,
+        "code": "araba",
+        "name": "Araba"
+    },
+    "model": "geolocation.state",
+    "pk": 3
+},
+{
+    "fields": {
+        "state": 1,
+        "code": "irun",
+        "name": "Irun"
+    },
+    "model": "geolocation.city",
+    "pk": 1
+},
+{
+    "fields": {
+        "state": 1,
+        "code": "andoain",
+        "name": "Andoain"
+    },
+    "model": "geolocation.city",
+    "pk": 2
+},
+{
+    "fields": {
+        "state": 1,
+        "code": "hernani",
+        "name": "Hernani"
+    },
+    "model": "geolocation.city",
+    "pk": 3
+},
+{
+    "fields": {
+        "state": 1,
+        "code": "pasaia",
+        "name": "Pasaia"
+    },
+    "model": "geolocation.city",
+    "pk": 4
+}
+]

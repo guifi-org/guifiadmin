@@ -1,0 +1,122 @@
+{% load i18n %}
+{% load staticfiles %}
+<a class="web" href="{% url "admin:invoices_invoice_change" invoice.pk %}">{% trans "Edit invoice" %}</a>
+<article class="invoice">
+    <section class="invoice-header">
+        <div class="invoice-detail">
+            <p class="invoice-number">
+                <span class="label">{% trans "Invoice" %}</span>
+                <span class="value number">{{ invoice.invoice_number }}</span>
+            </p>
+            <p class="invoice-date">
+                <span class="label">{% trans "Date" %}</span>
+                <span class="value date">{{ invoice.date|date:"Y-m-d" }}</span>
+            </p>
+        </div>
+        <div class="company">
+            <p class="name">GISA Elkartea</p>
+            <img class="logo" src="{% static "imgs/logo.jpg" %}">
+            <p class="ID">
+                <span class="label">{% trans "IFZ" %}</span>
+                <span class="value">{{ invoice_ifz }}</span>
+            </p>
+            <p class="address">
+                <span class="label">{% trans "Address" %}</span>
+                <span class="value">{{ invoice_address }}</span>
+            </p>
+            <p class="zip">
+                <span class="label">{% trans "ZIP" %}</span>
+                <span class="value">{{ invoice_zip }}</span>
+            </p>
+            <p class="city">
+                <span class="label">{% trans "City" %}</span>
+                <span class="value">{{ invoice_city }}</span>
+            </p>
+            <p class="state">
+                <span class="label">{% trans "State" %}</span>
+                <span class="value">{{ invoice_state }}</span>
+            </p>
+        </div>
+        <div class="client">
+            <p class="label">{% trans "Client" %}</p>
+            <p class="value">
+                {{ invoice.person.name }},<br>
+                {{ invoice.person.fid}}<br>
+                {{ invoice.address}}<br>
+            </p>
+        </div>
+    </section>
+    <section class="invoice-lines">
+        <table>
+            <colgroup>
+                <col class="invoice-line-description">
+                <col class="invoice-line-quantity">
+                <col class="invoice-line-unit-price">
+                <col class="invoice-line-vat">
+                <col class="invoice-line-total">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>{% trans "Description" %}</th>
+                    <th>{% trans "Quantity" %}</th>
+                    <th>{% trans "Unit price" %}</th>
+                    <th>{% trans "VAT" %}</th>
+                    <th>{% trans "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for line in invoice.lines.all %}
+                <tr>
+                    <td>{{ line.description }}</td>
+                    <td class="number">{{ line.quantity }}</td>
+                    <td class="number">{{ line.unit_price }}</td>
+                    <td class="number">{{ line.vat.percent }}%</td>
+                    <td class="number">{{ line.total }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <section class="invoice-total">
+        <span class="label">{% trans "Total" %}</span>
+        <span class="value">{{ invoice.total }}</span>
+    </section>
+    <section class="invoice-taxes">
+        <table>
+            <colgroup>
+                <col class="invoice-taxes-base">
+                <col class="invoice-taxes-vat">
+                <col class="invoice-taxes-re">
+                <col class="invoice-taxes-total">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>{% trans "Base" %}</th>
+                    <th>{% trans "VAT" %}</th>
+                    <th>{% trans "R.E." %}</th>
+                    <th>{% trans "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vat in invoice.vat_details %}
+                <tr>
+                    <td class="number">{{ vat.base|floatformat:2 }}</td>
+                    <td class="number">{{ vat.vat__percent }}%</td>
+                    <td class="number"></td>
+                    <td class="number">{{ vat.tax|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <section class="invoice-footer">
+        {% if invoice_footer %}
+        <p>{{ invoice_footer }}</p>
+        {% endif %}
+        {% if invoice.notes %}
+        <div class="invoice-notes">
+            {{ invoice.notes |safe }}
+        </div>
+        {% endif %}
+    </section>
+</article>
