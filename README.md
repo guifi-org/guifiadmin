@@ -1,6 +1,8 @@
 GuifiAdmin
 ==========
 
+Documentación en castellano en la wiki.
+
 # Quick Setup
 
 Clone the repository
