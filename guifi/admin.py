@@ -54,7 +54,7 @@ class DeviceAdmin(admin.ModelAdmin):
         return False
 
     def get_actions(self, request):
-        actions = super(NodeAdmin, self).get_actions(request)
+        actions = super(DeviceAdmin, self).get_actions(request)
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
